@@ -1,7 +1,4 @@
 import './App.css';
-import { Clickable } from './COMPONENTS/Clickable';
-import { Spacer } from './COMPONENTS/Spacer';
-import { firebase_CreateDocument, firebase_DeleteDocument, firebase_UpdateDocument } from './firebase';
 
 function App() {
   return (
