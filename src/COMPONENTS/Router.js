@@ -1,5 +1,5 @@
-import { BrowserRouter, useNavigate } from "react-router";
-import { BrowserRouter, Routes, Route } from "react-router";
+
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router";
 
 export function createRouter({ routes }) {
     return <BrowserRouter>
