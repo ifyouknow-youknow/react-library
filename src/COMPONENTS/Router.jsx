@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router";
 
-export function createRouter({ routes }) {
+export function createRouter(routes) {
     return <BrowserRouter>
         <Routes>
             {
