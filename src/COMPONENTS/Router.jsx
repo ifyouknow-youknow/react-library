@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router";
 
 export function createRouter(routes) {
