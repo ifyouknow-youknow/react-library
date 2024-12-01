@@ -1,0 +1,16 @@
+/* Padding Utilities */
+.p-sm {
+    padding: 0.5em;
+}
+
+.p {
+    padding: 1em;
+}
+
+.p-md {
+    padding: 1.5em;
+}
+
+.p-lg {
+    padding: 2em;
+}

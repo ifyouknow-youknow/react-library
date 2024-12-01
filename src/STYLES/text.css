@@ -1,0 +1,15 @@
+.text-sm {
+    font-size: 1rem;
+}
+
+.text-md {
+    font-size: 2rem;
+}
+
+.text-lg {
+    font-size: 3rem;
+}
+
+.line-sm {
+    line-height: 1em;
+}

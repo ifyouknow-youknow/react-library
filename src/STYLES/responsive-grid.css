@@ -1,0 +1,118 @@
+/* Grid System */
+.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Default: Single column */
+    width: 100%;
+}
+
+.row>div {
+    width: 100%;
+    /* Ensure all children span full width */
+}
+
+/* --- Small Screens (min-width: 680px) --- */
+@media (min-width: 680px) {
+    .row {
+        grid-template-columns: 1fr;
+        /* Still single-column layout */
+    }
+
+    .sm0 {
+        display: none;
+        /* Hide elements with sm0 class */
+    }
+}
+
+/* --- Medium Screens (min-width: 800px) --- */
+@media (min-width: 800px) {
+    .row {
+        grid-template-columns: 1fr 1fr;
+        /* Two-column layout */
+    }
+
+    .md0 {
+        display: none;
+        /* Hide elements with md0 class */
+    }
+
+    .md1 {
+        display: block;
+        /* Span one column */
+        grid-column: span 1;
+    }
+
+    .md2 {
+        display: block;
+        /* Span two columns */
+        grid-column: span 2;
+    }
+}
+
+/* --- Large Screens (min-width: 1100px) --- */
+@media (min-width: 1100px) {
+    .row {
+        grid-template-columns: repeat(3, 1fr);
+        /* Three-column layout */
+    }
+
+    .lg0 {
+        display: none;
+        /* Hide elements with lg0 class */
+    }
+
+    .lg1 {
+        display: block;
+        /* Span one column */
+        grid-column: span 1;
+    }
+
+    .lg2 {
+        display: block;
+        /* Span two columns */
+        grid-column: span 2;
+    }
+
+    .lg3 {
+        display: block;
+        /* Span three columns */
+        grid-column: span 3;
+    }
+}
+
+/* --- Extra Large Screens (min-width: 1400px) --- */
+@media (min-width: 1400px) {
+    .row {
+        grid-template-columns: repeat(4, 1fr);
+        /* Four-column layout */
+    }
+
+    .xl0 {
+        display: none;
+        /* Hide elements with xl0 class */
+    }
+
+    .xl1 {
+        display: block;
+        /* Span one column */
+        grid-column: span 1;
+    }
+
+    .xl2 {
+        display: block;
+        /* Span two columns */
+        grid-column: span 2;
+    }
+
+    .xl3 {
+        display: block;
+        /* Span three columns */
+        grid-column: span 3;
+    }
+
+    .xl4 {
+        display: block;
+        /* Span four columns */
+        grid-column: span 4;
+    }
+}
