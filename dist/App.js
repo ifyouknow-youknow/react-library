@@ -5,11 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 require("./App.css");
-var _Clickable = require("./COMPONENTS/Clickable");
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function App() {
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: "main"
-  }, /*#__PURE__*/React.createElement("h1", {
+  }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "roboto"
   }, "NOTHING BAGEL"));
 }
