@@ -10,6 +10,22 @@
     font-size: 3rem;
 }
 
+.upper {
+    text-transform: uppercase;
+}
+
+.lower {
+    text-transform: lowercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
 .line-sm {
     line-height: 1em;
 }
