@@ -31,6 +31,17 @@
   /* Hides scrollbar in Webkit-based browsers (Chrome, Safari) */
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
