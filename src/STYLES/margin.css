@@ -17,3 +17,12 @@
 .m-lg {
     margin: 2em;
 }
+
+.m-v {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.m-h {
+    margin-left: 1em;
+    margin-right: 1em;
+}

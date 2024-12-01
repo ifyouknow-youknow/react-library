@@ -19,3 +19,12 @@
 .p-lg {
     padding: 2em;
 }
+
+.p-v {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.p-h {
+    padding-left: 1em;
+    padding-right: 1em;
+}

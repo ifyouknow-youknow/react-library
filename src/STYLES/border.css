@@ -21,3 +21,115 @@
 .border-b-6-black {
     border-bottom: 6px solid black;
 }
+
+.border-t-1-black {
+    border-top: 1px solid black;
+}
+.border-t-2-black {
+    border-top: 2px solid black;
+}
+.border-t-3-black {
+    border-top: 3px solid black;
+}
+.border-t-4-black {
+    border-top: 4px solid black;
+}
+.border-t-5-black {
+    border-top: 5px solid black;
+}
+.border-t-6-black {
+    border-top: 6px solid black;
+}
+
+.border-l-1-black {
+    border-left: 1px solid black;
+}
+.border-l-2-black {
+    border-left: 2px solid black;
+}
+.border-l-3-black {
+    border-left: 3px solid black;
+}
+.border-l-4-black {
+    border-left: 4px solid black;
+}
+.border-l-5-black {
+    border-left: 5px solid black;
+}
+.border-l-6-black {
+    border-left: 6px solid black;
+}
+
+.border-r-1-black {
+    border-right: 1px solid black;
+}
+.border-r-2-black {
+    border-right: 2px solid black;
+}
+.border-r-3-black {
+    border-right: 3px solid black;
+}
+.border-r-4-black {
+    border-right: 4px solid black;
+}
+.border-r-5-black {
+    border-right: 5px solid black;
+}
+.border-r-6-black {
+    border-right: 6px solid black;
+}
+
+.border-v-1-black {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.border-v-2-black {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.border-v-3-black {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+.border-v-4-black {
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+}
+.border-v-5-black {
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+}
+.border-v-6-black {
+    border-top: 6px solid black;
+    border-bottom: 6px solid black;
+}
+
+.border-h-1-black {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.border-h-2-black {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.border-h-3-black {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+}
+
+.border-h-4-black {
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+}
+
+.border-h-5-black {
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+}
+
+.border-h-6-black {
+    border-left: 6px solid black;
+    border-right: 6px solid black;
+}

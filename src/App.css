@@ -7,4 +7,6 @@
 @import './STYLES/layout.css';
 @import './STYLES/responsive-grid.css';
 @import './STYLES/border.css';
+@import './STYLES/images.css';
+@import './STYLES/actions.css';
 @import './STYLES/misc.css';

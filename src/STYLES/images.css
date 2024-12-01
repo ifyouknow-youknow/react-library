@@ -1,0 +1,9 @@
+.fill {
+    object-fit: fill;
+}
+.cover {
+    object-fit: cover;
+}
+.contain {
+    object-fit: contain;
+}
