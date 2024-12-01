@@ -2,6 +2,7 @@
   "name": "react-library",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -15,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "babel src --out-dir dist --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -38,6 +39,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "babel-loader": "^9.2.1"
   }
