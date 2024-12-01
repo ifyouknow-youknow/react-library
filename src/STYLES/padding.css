@@ -1,4 +1,9 @@
 /* Padding Utilities */
+
+.no-p {
+    padding: 0;
+}
+
 .p-sm {
     padding: 0.5em;
 }
