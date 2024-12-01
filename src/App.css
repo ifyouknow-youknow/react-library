@@ -18,8 +18,19 @@
   max-width: 1400px;
   margin: 0 auto;
   min-height: 90vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  /* Scrolls only when the content overflows */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
 }
+
+.main::-webkit-scrollbar {
+  display: none;
+  /* Hides scrollbar in Webkit-based browsers (Chrome, Safari) */
+}
+
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
