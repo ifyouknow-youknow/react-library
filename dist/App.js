@@ -11,6 +11,6 @@ function App() {
     className: "main"
   }, /*#__PURE__*/React.createElement("h1", {
     className: "roboto"
-  }, "NOTHING BAGEL"), /*#__PURE__*/React.createElement(_Clickable.Clickable, null, "BAGEL"));
+  }, "NOTHING BAGEL"));
 }
 var _default = exports.default = App;

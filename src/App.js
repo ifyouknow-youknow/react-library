@@ -1,5 +1,5 @@
 import './App.css';
-import { Clickable } from './Clickable';
+import { Clickable } from './COMPONENTS/Clickable';
 
 function App() {
   return (
