@@ -82,6 +82,22 @@
   /* Ensure all children span full width */
 }
 
+.separate-h {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.separate-v {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vertical-center {
+  align-items: center;
+}
+
 /* Padding Utilities */
 .p-sm {
   padding: 0.5em;
