@@ -1,0 +1,63 @@
+.radius-sm {
+    border-radius: 6px;
+}
+
+.radius {
+    border-radius: 12px
+}
+
+.radius-lg {
+    border-radius: 20px;
+}
+
+.full-radius {
+    border-radius: 100px;
+}
+
+.radius-tl-sm {
+    border-top-left-radius: 6px;
+}
+
+.radius-tl {
+    border-top-left-radius: 12px;
+}
+
+.radius-tl-lg {
+    border-top-left-radius: 20px;
+}
+
+.radius-tr-sm {
+    border-top-right-radius: 6px;
+}
+
+.radius-tr {
+    border-top-right-radius: 12px;
+}
+
+.radius-tr-lg {
+    border-top-right-radius: 20px;
+}
+
+.radius-bl-sm {
+    border-bottom-left-radius: 6px;
+}
+
+.radius-bl {
+    border-bottom-left-radius: 12px;
+}
+
+.radius-bl-lg {
+    border-bottom-left-radius: 20px;
+}
+
+.radius-br-sm {
+    border-bottom-right-radius: 6px;
+}
+
+.radius-br {
+    border-bottom-right-radius: 12px;
+}
+
+.radius-br-lg {
+    border-bottom-right-radius: 20px;
+}
