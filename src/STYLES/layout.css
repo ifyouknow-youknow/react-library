@@ -113,3 +113,23 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
+
+.gap-sm {
+    gap: 0.5em;
+}
+
+.gap {
+    gap: 1em;
+}
+
+.gap-md {
+    gap: 1.5em
+}
+
+.gap-lg {
+    gap: 2em
+}
+
+.gap-xl {
+    gap: 2.5em;
+}
