@@ -3,11 +3,15 @@
 }
 
 .text-md {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .text-lg {
-    font-size: 3rem;
+    font-size: 2rem;
+}
+
+.text-xl {
+    font-size: 2.5rem;
 }
 
 .upper {
@@ -33,9 +37,11 @@
 .text-center {
     text-align: center;
 }
+
 .text-right {
     text-align: end;
 }
+
 .text-left {
     text-align: start;
 }
