@@ -19,6 +19,10 @@
   }
 }
 
+.fade-in-500ms {
+  animation: fadeIn 500ms ease-in-out;
+}
+
 .fade-in-1s {
   animation: fadeIn 1s ease-in-out;
 }
@@ -41,6 +45,10 @@
 
 .fade-in-6s {
   animation: fadeIn 6s ease-in-out;
+}
+
+.fade-out-500ms {
+  animation: fadeOut 500ms ease-in-out;
 }
 
 .fade-out-1s {
