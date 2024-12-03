@@ -49,3 +49,15 @@
 .text-left {
     text-align: start;
 }
+
+.spacing-sm {
+    letter-spacing: -1px;
+}
+
+.spacing-xs {
+    letter-spacing: -2px;
+}
+
+.spacing-xxs {
+    letter-spacing: -3px;
+}
