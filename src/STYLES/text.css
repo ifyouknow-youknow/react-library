@@ -61,3 +61,27 @@
 .spacing-xxs {
     letter-spacing: -3px;
 }
+
+.extra-thin {
+    font-weight: 100;
+}
+
+.thin {
+    font-weight: 300;
+}
+
+.normal {
+    font-weight: 500;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.extra-bold {
+    font-weight: 800;
+}
+
+.super-bold {
+    font-weight: 900;
+}
