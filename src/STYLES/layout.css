@@ -10,6 +10,14 @@
     position: relative;
 }
 
+.sticky {
+    position: sticky;
+}
+
+.static {
+    position: static;
+}
+
 .top {
     top: 0;
 }
