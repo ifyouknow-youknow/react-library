@@ -56,6 +56,10 @@
     align-items: center;
 }
 
+.vertical-bottom {
+    align-items: end;
+}
+
 .fit-width {
     width: fit-content;
 }
