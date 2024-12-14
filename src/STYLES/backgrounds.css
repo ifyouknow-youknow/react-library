@@ -1,11 +1,21 @@
 .bg-black {
     background-color: black;
 }
+
 .bg-white {
     background-color: white;
 }
+
 .bg-light {
     background-color: #f6f8fa;
+}
+
+.bg-light-blue {
+    background-color: #17A3E9;
+}
+
+.bg-light-gray {
+    background-color: ghostwhite;
 }
 
 /* Block Styles for Testing */
