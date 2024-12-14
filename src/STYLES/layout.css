@@ -147,3 +147,31 @@
 .gap-xl {
     gap: 2.5em;
 }
+
+.scroll-x {
+    overflow-x: scroll;
+    /* Enable horizontal scrolling */
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+.scroll-x::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+}
+
+.scroll-y {
+    overflow-y: scroll;
+    /* Enable vertical scrolling */
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+.scroll-y::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+}
