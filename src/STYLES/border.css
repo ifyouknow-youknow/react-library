@@ -361,3 +361,7 @@
     border-left: 6px solid white;
     border-right: 6px solid white;
 }
+
+.no-border {
+    border: 0;
+}
