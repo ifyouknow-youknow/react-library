@@ -7,3 +7,11 @@ export function randomString(length) {
     }
     return result;
 }
+
+export function emailFix(isWithPrefix, email, appName) {
+    if (isWithPrefix) {
+        return `${appName.toLowerCase()}_${email}`;
+    } else {
+        return email.split('_')[1];
+    }
+}
