@@ -7,72 +7,74 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 
 // FIRESTORE ------------------------------------------------------------------------------------ START
 export async function firebase_CreateDocument(db, table, documentId, args, success) {
-    await setDoc(doc(db, table, documentId), args).then(() => {
+    try {
+        await setDoc(doc(db, table, documentId), args);
         console.log('CREATED');
         success(true);
-    }).catch((err) => {
-        console.log(err);
+    } catch (err) {
+        console.error(err);
         alert_SomethingWentWrong();
-    })
+    }
 }
 export async function firebase_UpdateDocument(db, table, documentId, args, success) {
-    const thisRef = doc(db, table, documentId);
-    await updateDoc(thisRef, args).then(() => {
+    try {
+        const thisRef = doc(db, table, documentId);
+        await updateDoc(thisRef, args);
         console.log('UPDATED');
         success(true);
-        return;
-    }).catch((err) => {
-        console.log(err);
+    } catch (err) {
+        console.error(err);
         alert_SomethingWentWrong();
-        return;
-    })
+    }
 }
 export async function firebase_DeleteDocument(db, table, documentId, success) {
-    await deleteDoc(doc(db, table, documentId)).then(() => {
-        console.log("DELETED");
+    try {
+        await deleteDoc(doc(db, table, documentId));
+        console.log('DELETED');
         success(true);
-    }).catch((err) => {
-        console.log(err);
+    } catch (err) {
+        console.error(err);
         alert_SomethingWentWrong();
-    })
+    }
 }
 export async function firebase_GetDocument(db, table, documentId, setter) {
-    const docRef = doc(db, table, documentId);
-    const docSnap = await getDoc(docRef).then(() => {
+    try {
+        const docRef = doc(db, table, documentId);
+        const docSnap = await getDoc(docRef);
+
         if (docSnap.exists()) {
             const obj = {
                 id: docSnap.id,
-                ...docSnap.data()
-            }
+                ...docSnap.data(),
+            };
             setter(obj);
-            console.log('GOT DOCUMENT')
+            console.log('GOT DOCUMENT');
         } else {
             console.log("NO DOCUMENT");
         }
-    }).catch((err) => {
-        console.log(err);
+    } catch (err) {
+        console.error(err);
         alert_SomethingWentWrong();
-    })
+    }
 }
 export async function firebase_GetAllDocuments(db, table, setter) {
-    const querySnapshot = await getDocs(collection(db, table)).then(() => {
+    try {
+        const querySnapshot = await getDocs(collection(db, table));
         const array = [];
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             const obj = {
                 id: doc.id,
-                ...doc.data()
-            }
-            array.push(obj)
+                ...doc.data(),
+            };
+            array.push(obj);
         });
-        console.log("GOT ALL DOCUMENTS")
-        setter(array)
-    })
-        .catch((err) => {
-            console.log(err)
-            alert_SomethingWentWrong();
-        })
-
+        console.log("GOT ALL DOCUMENTS");
+        setter(array);
+    } catch (err) {
+        console.log(err);
+        alert_SomethingWentWrong();
+    }
 }
 // FIRESTORE ------------------------------------------------------------------------------------ END
 
@@ -83,28 +85,27 @@ export async function auth_CheckUser(auth, user) {
     user(thisUser);
 }
 export async function auth_CreateUser(auth, email, password, user) {
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed up 
-            const thisUser = userCredential.user;
-            user(thisUser)
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            alert(errorCode)
-            user(null)
-            // ..
-        });
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const thisUser = userCredential.user;
+        user(thisUser); // Call the callback with the created user
+        console.log("User created successfully:", thisUser);
+    } catch (error) {
+        console.error("Error creating user:", error.code, error.message);
+        alert(error.code); // Show the error code to the user
+        user(null); // Call the callback with null to indicate failure
+    }
 }
 export async function auth_SignIn(auth, email, password, user) {
     try {
-        const thisUser = await signInWithEmailAndPassword(auth, email, password);
-        user(thisUser);
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const thisUser = userCredential.user;
+        user(thisUser); // Call the callback with the signed-in user
+        console.log("User signed in successfully:", thisUser);
     } catch (error) {
-        console.error("Error signing in:", error.message); // Logs the error message for debugging
-        user(null)
-
+        console.error("Error signing in:", error.code, error.message);
+        alert(error.code); // Show the error code to the user
+        user(null); // Call the callback with null to indicate failure
     }
 }
 
