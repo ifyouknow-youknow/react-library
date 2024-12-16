@@ -1,17 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { collection, deleteDoc, doc, getDoc, getDocs, getFirestore, setDoc, updateDoc } from "firebase/firestore";
-import { firebaseConfig } from "./config";
 // 
 import { alert_SomethingWentWrong } from './FUNCTIONS/alerts'
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// 
-const db = getFirestore(app);
 // 
 
 // FIRESTORE ------------------------------------------------------------------------------------ START
-export async function firebase_CreateDocument(table, documentId, args, success) {
+export async function firebase_CreateDocument(db, table, documentId, args, success) {
     await setDoc(doc(db, table, documentId), args).then(() => {
         console.log('CREATED');
         success(true);
@@ -20,7 +15,7 @@ export async function firebase_CreateDocument(table, documentId, args, success) 
         alert_SomethingWentWrong();
     })
 }
-export async function firebase_UpdateDocument(table, documentId, args, success) {
+export async function firebase_UpdateDocument(db, table, documentId, args, success) {
     const thisRef = doc(db, table, documentId);
     await updateDoc(thisRef, args).then(() => {
         console.log('UPDATED');
@@ -32,7 +27,7 @@ export async function firebase_UpdateDocument(table, documentId, args, success) 
         return;
     })
 }
-export async function firebase_DeleteDocument(table, documentId, success) {
+export async function firebase_DeleteDocument(db, table, documentId, success) {
     await deleteDoc(doc(db, table, documentId)).then(() => {
         console.log("DELETED");
         success(true);
@@ -41,7 +36,7 @@ export async function firebase_DeleteDocument(table, documentId, success) {
         alert_SomethingWentWrong();
     })
 }
-export async function firebase_GetDocument(table, documentId, setter) {
+export async function firebase_GetDocument(db, table, documentId, setter) {
     const docRef = doc(db, table, documentId);
     const docSnap = await getDoc(docRef).then(() => {
         if (docSnap.exists()) {
@@ -59,7 +54,7 @@ export async function firebase_GetDocument(table, documentId, setter) {
         alert_SomethingWentWrong();
     })
 }
-export async function firebase_GetAllDocuments(table, setter) {
+export async function firebase_GetAllDocuments(db, table, setter) {
     const querySnapshot = await getDocs(collection(db, table)).then(() => {
         const array = [];
         querySnapshot.forEach((doc) => {
@@ -80,3 +75,43 @@ export async function firebase_GetAllDocuments(table, setter) {
 
 }
 // FIRESTORE ------------------------------------------------------------------------------------ END
+
+// AUTH ------------------------------------------------------------------------------------ START
+
+export async function auth_CheckUser(auth, user) {
+    onAuthStateChanged(auth, (thisUser) => {
+        if (thisUser) {
+            user(thisUser)
+        } else {
+            user(null)
+        }
+    });
+}
+export async function auth_CreateUser(auth, email, password, user) {
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed up 
+            const thisUser = userCredential.user;
+            user(thisUser)
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            alert(errorCode)
+            user(null)
+            // ..
+        });
+}
+export async function auth_SignIn(auth, email, password, user) {
+    try {
+        const thisUser = await signInWithEmailAndPassword(auth, email, password);
+        user(thisUser);
+    } catch (error) {
+        console.error("Error signing in:", error.message); // Logs the error message for debugging
+        user(null)
+
+    }
+}
+
+
+// AUTH ------------------------------------------------------------------------------------ END
