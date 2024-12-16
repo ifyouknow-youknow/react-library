@@ -1,7 +1,7 @@
 import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 // 
 import { alert_SomethingWentWrong } from './FUNCTIONS/alerts'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 // 
 
@@ -107,6 +107,15 @@ export async function auth_SignIn(auth, email, password, user) {
         alert(error.code); // Show the error code to the user
         user(null); // Call the callback with null to indicate failure
     }
+}
+export async function auth_SignOut(auth, success) {
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        success(true)
+    }).catch((error) => {
+        // An error happened.
+        success(false)
+    });
 }
 
 
