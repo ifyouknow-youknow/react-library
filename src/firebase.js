@@ -2,6 +2,12 @@ import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, updateDoc, 
 // 
 import { alert_SomethingWentWrong } from './FUNCTIONS/alerts'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+    ref,
+    uploadBytesResumable,
+    getDownloadURL,
+    deleteObject
+} from "firebase/storage";
 
 
 // 
