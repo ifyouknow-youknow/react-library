@@ -3,6 +3,7 @@ import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, updateDoc, 
 import { alert_SomethingWentWrong } from './FUNCTIONS/alerts'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
+
 // 
 
 // FIRESTORE ------------------------------------------------------------------------------------ START
@@ -149,6 +150,73 @@ export async function auth_SignOut(auth, success) {
         // An error happened.
         success(false)
     });
+}
+
+
+// AUTH ------------------------------------------------------------------------------------ END
+
+// STORAGE ------------------------------------------------------------------------------------ START
+
+export async function storage_UploadMedia(storage, media, mediaPath, success) {
+    try {
+        console.log("Starting upload...");
+
+        // Convert the data URL to a Blob
+        const response = await fetch(media);
+        if (!response.ok) throw new Error("Failed to fetch media");
+
+        const mediaBlob = await response.blob();
+        console.log("Media Blob created:", mediaBlob);
+
+        const storageRef = ref(storage, mediaPath);
+        console.log("Storage reference created:", storageRef);
+
+        const uploadTask = uploadBytesResumable(storageRef, mediaBlob);
+
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                // Handle progress changes, if needed
+                const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log(`Upload is ${progress}% done`);
+            },
+            (error) => {
+                // Handle errors
+                console.error("Error uploading media:", error);
+                success(false);
+            },
+            async () => {
+                // Handle successful completion
+                console.log("Upload completed successfully");
+                success(true);
+            }
+        );
+    } catch (error) {
+        console.error("Error uploading media: ", error);
+        success(false);
+    }
+}
+export async function storage_DownloadMedia(storage, mediaPath, setter) {
+    try {
+        const url = await getDownloadURL(ref(storage, mediaPath));
+        setter(url);
+    } catch (error) {
+        console.error("Error downloading media:", error);
+    }
+}
+export async function storage_DeleteMedia(storage, mediaPath, success) {
+    const desertRef = ref(storage, mediaPath);
+    // Delete the file
+    deleteObject(desertRef)
+        .then(() => {
+            // File deleted successfully
+            success(true);
+        })
+        .catch((error) => {
+            // Uh-oh, an error occurred!
+            alert(`ERROR: ${error.message}`);
+        });
 }
 
 
