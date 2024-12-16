@@ -1,7 +1,7 @@
 import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 // 
 import { alert_SomethingWentWrong } from './FUNCTIONS/alerts'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 // 
 
@@ -81,8 +81,13 @@ export async function firebase_GetAllDocuments(db, table, setter) {
 // AUTH ------------------------------------------------------------------------------------ START
 
 export async function auth_CheckUser(auth, user) {
-    const thisUser = auth.currentUser;
-    user(thisUser);
+    onAuthStateChanged(auth, (thisUser) => {
+        if (thisUser) {
+            user(thisUser)
+        } else {
+            user(null)
+        }
+    });
 }
 export async function auth_CreateUser(auth, email, password, user) {
     try {
