@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 // 
 import { alert_SomethingWentWrong } from './FUNCTIONS/alerts'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
@@ -74,6 +74,34 @@ export async function firebase_GetAllDocuments(db, table, setter) {
     } catch (err) {
         console.log(err);
         alert_SomethingWentWrong();
+    }
+}
+export async function firebase_GetAllDocumentsQueried(db, table, queries, setter) {
+    try {
+        // Start with the collection reference
+        let q = collection(db, table);
+
+        // Dynamically apply 'where' clauses from queries
+        queries.forEach((queryObj) => {
+            const { field, operator, value } = queryObj;
+            if (field && operator && value !== undefined) {
+                q = query(q, where(field, operator, value));
+            }
+        });
+
+        // Fetch the documents
+        const querySnapshot = await getDocs(q);
+
+        // Store or process the data
+        const documents = [];
+        querySnapshot.forEach((doc) => {
+            documents.push({ id: doc.id, ...doc.data() });
+        });
+
+        // Call the setter with the fetched documents
+        setter(documents);
+    } catch (error) {
+        console.error("Error fetching documents:", error);
     }
 }
 // FIRESTORE ------------------------------------------------------------------------------------ END
