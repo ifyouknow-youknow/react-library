@@ -1,4 +1,3 @@
-import { initializeApp } from "firebase/app";
 import { collection, deleteDoc, doc, getDoc, getDocs, getFirestore, setDoc, updateDoc } from "firebase/firestore";
 // 
 import { alert_SomethingWentWrong } from './FUNCTIONS/alerts'
@@ -79,13 +78,8 @@ export async function firebase_GetAllDocuments(db, table, setter) {
 // AUTH ------------------------------------------------------------------------------------ START
 
 export async function auth_CheckUser(auth, user) {
-    onAuthStateChanged(auth, (thisUser) => {
-        if (thisUser) {
-            user(thisUser)
-        } else {
-            user(null)
-        }
-    });
+    const thisUser = auth.currentUser;
+    user(thisUser);
 }
 export async function auth_CreateUser(auth, email, password, user) {
     createUserWithEmailAndPassword(auth, email, password)
