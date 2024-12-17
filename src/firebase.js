@@ -111,6 +111,36 @@ export async function firebase_GetAllDocumentsQueried(db, table, queries, setter
         console.error("Error fetching documents:", error);
     }
 }
+export function firebase_GetAllDocumentsQueriedListener(db, table, queries, setter) {
+    try {
+        // Start with the collection reference
+        let q = collection(db, table);
+
+        // Dynamically apply 'where' clauses from queries
+        queries.forEach((queryObj) => {
+            const { field, operator, value } = queryObj;
+            if (field && operator && value !== undefined) {
+                q = query(q, where(field, operator, value));
+            }
+        });
+
+        // Listen to real-time changes
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const documents = [];
+            querySnapshot.forEach((doc) => {
+                documents.push({ id: doc.id, ...doc.data() });
+            });
+
+            // Call the setter with the fetched documents
+            setter(documents);
+        });
+
+        // Return the unsubscribe function to stop listening when necessary
+        return unsubscribe;
+    } catch (error) {
+        console.error("Error listening to documents:", error);
+    }
+}
 // FIRESTORE ------------------------------------------------------------------------------------ END
 
 // AUTH ------------------------------------------------------------------------------------ START
