@@ -52,6 +52,11 @@
     justify-content: space-between;
 }
 
+.horizontal-center {
+    display: flex;
+    justify-content: center;
+}
+
 .vertical-center {
     align-items: center;
 }
