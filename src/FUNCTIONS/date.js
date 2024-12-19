@@ -73,12 +73,3 @@ export function daysInMonth(month, year = new Date().getFullYear()) {
     const days = new Date(year, month, 0).getDate();
     return parseFloat(days);
 }
-export function daysInMonth(month, year = new Date().getFullYear()) {
-    if (typeof month !== 'number' || month < 1 || month > 12) {
-        throw new Error("Month must be a number between 1 and 12.");
-    }
-
-    // JavaScript Date allows 0 for the last day of the previous month
-    const days = new Date(year, month, 0).getDate();
-    return parseFloat(days);
-}
