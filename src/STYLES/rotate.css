@@ -1,71 +1,89 @@
 .rotate-5-right {
     transform: rotate(5deg);
+    display: inline;
 }
 
 .rotate-10-right {
     transform: rotate(10deg);
+    display: inline;
 }
 
 .rotate-15-right {
     transform: rotate(15deg);
+    display: inline;
 }
 
 .rotate-20-right {
     transform: rotate(20deg);
+    display: inline;
 }
 
 .rotate-25-right {
     transform: rotate(25deg);
+    display: inline;
 }
 
 .rotate-30-right {
     transform: rotate(30deg);
+    display: inline;
 }
 
 .rotate-35-right {
     transform: rotate(35deg);
+    display: inline;
 }
 
 .rotate-40-right {
     transform: rotate(40deg);
+    display: inline;
 }
 
 .rotate-45-right {
     transform: rotate(45deg);
+    display: inline;
 }
 
 .rotate-5-left {
     transform: rotate(-5deg);
+    display: inline;
 }
 
 .rotate-10-left {
     transform: rotate(-10deg);
+    display: inline;
 }
 
 .rotate-15-left {
     transform: rotate(-15deg);
+    display: inline;
 }
 
 .rotate-20-left {
     transform: rotate(-20deg);
+    display: inline;
 }
 
 .rotate-25-left {
     transform: rotate(-25deg);
+    display: inline;
 }
 
 .rotate-30-left {
     transform: rotate(-30deg);
+    display: inline;
 }
 
 .rotate-35-left {
     transform: rotate(-35deg);
+    display: inline;
 }
 
 .rotate-40-left {
     transform: rotate(-40deg);
+    display: inline;
 }
 
 .rotate-45-left {
     transform: rotate(-45deg);
+    display: inline;
 }
