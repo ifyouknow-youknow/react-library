@@ -2,6 +2,10 @@
     position: fixed;
 }
 
+.inline {
+    display: inline;
+}
+
 .absolute {
     position: absolute;
 }
