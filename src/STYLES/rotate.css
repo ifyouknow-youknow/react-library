@@ -1,107 +1,71 @@
 .rotate-5-right {
     transform: rotate(5deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-10-right {
     transform: rotate(10deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-15-right {
     transform: rotate(15deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-20-right {
     transform: rotate(20deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-25-right {
     transform: rotate(25deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-30-right {
     transform: rotate(30deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-35-right {
     transform: rotate(35deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-40-right {
     transform: rotate(40deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-45-right {
     transform: rotate(45deg);
-    /* Rotate 10 degrees clockwise */
-    display: inline-block;
-    /* Ensure proper rendering for inline elements */
 }
 
 .rotate-5-left {
     transform: rotate(-5deg);
-    display: inline-block;
 }
 
 .rotate-10-left {
     transform: rotate(-10deg);
-    display: inline-block;
 }
 
 .rotate-15-left {
     transform: rotate(-15deg);
-    display: inline-block;
 }
 
 .rotate-20-left {
     transform: rotate(-20deg);
-    display: inline-block;
 }
 
 .rotate-25-left {
     transform: rotate(-25deg);
-    display: inline-block;
 }
 
 .rotate-30-left {
     transform: rotate(-30deg);
-    display: inline-block;
 }
 
 .rotate-35-left {
     transform: rotate(-35deg);
-    display: inline-block;
 }
 
 .rotate-40-left {
     transform: rotate(-40deg);
-    display: inline-block;
 }
 
 .rotate-45-left {
     transform: rotate(-45deg);
-    display: inline-block;
 }
