@@ -197,33 +197,36 @@ export async function storage_UploadMedia(storage, media, mediaPath, success) {
     try {
         console.log("Starting upload...");
 
-        // Convert the data URL to a Blob
-        const response = await fetch(media);
-        if (!response.ok) throw new Error("Failed to fetch media");
+        // Check if media is a valid File object
+        if (!(media instanceof File)) {
+            throw new Error("The provided media is not a valid file.");
+        }
 
-        const mediaBlob = await response.blob();
+        // Log the media type (to help debug and understand what file type is being uploaded)
+        console.log("Selected media type:", media.type);
+
+        const mediaBlob = media;  // Directly use the File object as the Blob
         console.log("Media Blob created:", mediaBlob);
 
+        // Create a storage reference based on the provided media path
         const storageRef = ref(storage, mediaPath);
         console.log("Storage reference created:", storageRef);
 
+        // Upload the media to Firebase Storage
         const uploadTask = uploadBytesResumable(storageRef, mediaBlob);
 
+        // Monitor the upload progress
         uploadTask.on(
             "state_changed",
             (snapshot) => {
-                // Handle progress changes, if needed
-                const progress =
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log(`Upload is ${progress}% done`);
             },
             (error) => {
-                // Handle errors
                 console.error("Error uploading media:", error);
                 success(false);
             },
             async () => {
-                // Handle successful completion
                 console.log("Upload completed successfully");
                 success(true);
             }
