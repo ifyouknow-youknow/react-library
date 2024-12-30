@@ -57,6 +57,7 @@ export async function firebase_GetDocument(db, table, documentId, setter) {
             setter(obj);
             console.log('GOT DOCUMENT');
         } else {
+            setter(null)
             console.log("NO DOCUMENT");
         }
     } catch (err) {
