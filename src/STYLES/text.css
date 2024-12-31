@@ -89,3 +89,7 @@
 .super-bold {
     font-weight: 900;
 }
+
+.force-wrap {
+    overflow-wrap: break-word;
+}
