@@ -93,3 +93,7 @@
 .force-wrap {
     overflow-wrap: break-word;
 }
+
+.no-wrap {
+    white-space: nowrap;
+}
