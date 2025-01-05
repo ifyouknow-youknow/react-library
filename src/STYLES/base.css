@@ -10,6 +10,7 @@
     max-width: 1400px;
     margin: 0 auto;
     min-height: 90vh;
+    overflow-y: hidden;
     overflow-y: auto;
     /* Scrolls only when the content overflows */
     scrollbar-width: none;
