@@ -4,13 +4,14 @@
     margin: 0;
     box-sizing: border-box;
     max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .main {
     max-width: 1400px;
     margin: 0 auto;
     min-height: 90vh;
-    overflow-y: hidden;
+    overflow-x: hidden;
     overflow-y: auto;
     /* Scrolls only when the content overflows */
     scrollbar-width: none;
