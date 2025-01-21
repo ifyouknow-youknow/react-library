@@ -39,6 +39,10 @@
     background-color: ghostwhite;
 }
 
+.bg-blue-purple {
+    background-color: #4713FB;
+}
+
 /* Block Styles for Testing */
 .block-blue {
     background-color: blue;
