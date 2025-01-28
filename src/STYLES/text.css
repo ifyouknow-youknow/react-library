@@ -1,25 +1,145 @@
-.text-xs {
-    font-size: 0.75rem;
+.text-size1 {
+    font-size: 0.5rem;
 }
 
-.text-sm {
-    font-size: 1rem;
+.text-size2 {
+    font-size: 0.6rem;
 }
 
-.text-md {
+.text-size3 {
+    font-size: 0.7rem;
+}
+
+.text-size4 {
+    font-size: 0.8rem;
+}
+
+.text-size5 {
+    font-size: 0.9rem;
+}
+
+.text-size6 {
+    font-size: 1.0rem;
+}
+
+.text-size7 {
+    font-size: 1.1rem;
+}
+
+.text-size8 {
+    font-size: 1.2rem;
+}
+
+.text-size9 {
+    font-size: 1.3rem;
+}
+
+.text-size10 {
+    font-size: 1.4rem;
+}
+
+.text-size11 {
     font-size: 1.5rem;
 }
 
-.text-lg {
-    font-size: 2rem;
+.text-size12 {
+    font-size: 1.6rem;
 }
 
-.text-xl {
+.text-size13 {
+    font-size: 1.7rem;
+}
+
+.text-size14 {
+    font-size: 1.8rem;
+}
+
+.text-size15 {
+    font-size: 1.9rem;
+}
+
+.text-size16 {
+    font-size: 2.0rem;
+}
+
+.text-size17 {
+    font-size: 2.1rem;
+}
+
+.text-size18 {
+    font-size: 2.2rem;
+}
+
+.text-size19 {
+    font-size: 2.3rem;
+}
+
+.text-size20 {
+    font-size: 2.4rem;
+}
+
+.text-size21 {
     font-size: 2.5rem;
 }
 
-.text-xxl {
-    font-size: 3rem;
+.text-size22 {
+    font-size: 2.6rem;
+}
+
+.text-size23 {
+    font-size: 2.7rem;
+}
+
+.text-size24 {
+    font-size: 2.8rem;
+}
+
+.text-size25 {
+    font-size: 2.9rem;
+}
+
+.text-size26 {
+    font-size: 3.0rem;
+}
+
+.text-size27 {
+    font-size: 3.1rem;
+}
+
+.text-size28 {
+    font-size: 3.2rem;
+}
+
+.text-size29 {
+    font-size: 3.3rem;
+}
+
+.text-size30 {
+    font-size: 3.4rem;
+}
+
+.text-size31 {
+    font-size: 3.5rem;
+}
+
+.text-size32 {
+    font-size: 3.6rem;
+}
+
+.text-size33 {
+    font-size: 3.7rem;
+}
+
+.text-size34 {
+    font-size: 3.8rem;
+}
+
+.text-size35 {
+    font-size: 3.9rem;
+}
+
+.text-size36 {
+    font-size: 4.0rem;
 }
 
 .upper {

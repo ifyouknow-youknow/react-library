@@ -184,3 +184,15 @@
     display: none;
     /* For Chrome, Safari, and Opera */
 }
+
+.expand-h {
+    width: 100%;
+    box-sizing: border-box;
+    /* Ensures padding and borders are included in the total width */
+}
+
+.expand-v {
+    height: 100%;
+    box-sizing: border-box;
+    /* Ensures padding and borders are included in the total height */
+}
