@@ -35,3 +35,22 @@ export function removeDupesByObj(arr, key) {
         return true;
     });
 }
+export function removeDupeArray(arrays) {
+    const seen = new Set();
+    return arrays.filter(array => {
+        // Normalize nested array or array of objects
+        const norm = JSON.stringify(
+            array.map(item =>
+                typeof item === 'object' && item !== null
+                    ? Object.keys(item).sort().reduce((acc, key) => {
+                        acc[key] = item[key];
+                        return acc;
+                    }, {})
+                    : item
+            )
+        );
+        if (seen.has(norm)) return false;
+        seen.add(norm);
+        return true;
+    });
+}
