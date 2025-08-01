@@ -1,4 +1,19 @@
-import { collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, query, setDoc, updateDoc, where } from "firebase/firestore";
+import {
+    collection,
+    deleteDoc,
+    doc,
+    getDoc,
+    getDocs,
+    onSnapshot,
+    query,
+    setDoc,
+    updateDoc,
+    where,
+    orderBy,
+    startAfter,
+    limit,
+    getFirestore
+} from "firebase/firestore";
 // 
 import { alert_SomethingWentWrong } from './FUNCTIONS/alerts'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
@@ -8,7 +23,29 @@ import {
     getDownloadURL,
     deleteObject
 } from "firebase/storage";
+import Geohash from "latlon-geohash"; // npm install latlon-geohash
+import { getDistance } from "geolib";
 
+// 
+
+// SAMPLE CONFIG
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyA1tPALxyFPU8Fbuxnxq2nt-PnrFtht_Jo",
+    authDomain: "keep-me-informed-93f54.firebaseapp.com",
+    projectId: "keep-me-informed-93f54",
+    storageBucket: "keep-me-informed-93f54.firebasestorage.app",
+    messagingSenderId: "889044450279",
+    appId: "1:889044450279:web:95acc8baa8817ae40ddb42",
+    measurementId: "G-KN75R1118H"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app)
 
 // 
 
@@ -142,6 +179,110 @@ export function firebase_GetAllDocumentsQueriedListener(db, table, queries, sett
         console.error("Error listening to documents:", error);
     }
 }
+// DISTANCE
+function calculateGeohashRange(latitude, longitude, distanceKm) {
+    // Rough estimate of degrees per km
+    const latDelta = distanceKm / 110.574;
+    const lonDelta = distanceKm / (111.320 * Math.cos((latitude * Math.PI) / 180));
+
+    const lowerLat = latitude - latDelta;
+    const lowerLon = longitude - lonDelta;
+    const upperLat = latitude + latDelta;
+    const upperLon = longitude + lonDelta;
+
+    const lowerHash = Geohash.encode(lowerLat, lowerLon);
+    const upperHash = Geohash.encode(upperLat, upperLon);
+
+    return [lowerHash, upperHash];
+}
+export async function firebase_GetAllDocumentsQueriedOrderedLimitedDistancedPaginated(
+    db,
+    coll,
+    queries,
+    orderByField,
+    descending,
+    limitNum,
+    {
+        geohash,
+        distance, // miles
+        lastDoc = null,
+    },
+    setter
+) {
+    try {
+        let q = collection(db, coll);
+
+        // Apply dynamic where clauses
+        queries.forEach((queryItem) => {
+            const { field, operator, value } = queryItem;
+            if (field && operator && value !== undefined) {
+                q = query(q, where(field, operator, value));
+            }
+        });
+
+        // Convert miles to km
+        const distanceKm = distance * 1.60934;
+
+        // Decode center point
+        const center = Geohash.decode(geohash);
+        const lat = center.lat;
+        const lon = center.lon;
+
+        // Calculate geohash range (prefix filter)
+        const [minHash, maxHash] = calculateGeohashRange(lat, lon, distanceKm);
+        const precision = 5;
+
+        q = query(
+            q,
+            where("geohash", ">=", minHash.substring(0, precision)),
+            where("geohash", "<=", maxHash.substring(0, precision)),
+            orderBy(orderByField, descending ? "desc" : "asc")
+        );
+
+        if (lastDoc) {
+            q = query(q, startAfter(lastDoc));
+        }
+
+        // Limit applied directly in the query chain
+        q = query(q, limit(limitNum));
+
+        const querySnapshot = await getDocs(q);
+
+        const results = [];
+        querySnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+
+            if (!data.geohash) return;
+
+            // Decode document location
+            const docLocation = Geohash.decode(data.geohash);
+            const docLat = docLocation.lat;
+            const docLon = docLocation.lon;
+
+            // Calculate actual distance (filter out false positives)
+            const distanceMeters = getDistance(
+                { latitude: lat, longitude: lon },
+                { latitude: docLat, longitude: docLon }
+            );
+
+            if (distanceMeters / 1000 <= distanceKm) {
+                results.push({
+                    id: docSnap.id,
+                    ...data,
+                    distance: distanceMeters / 1609.34, // in miles
+                    doc: docSnap,
+                });
+            }
+        });
+
+        console.log("Got filtered documents");
+        setter(results);
+    } catch (error) {
+        console.error("Error in firebase_GetAllDocumentsQueriedOrderedLimitedDistancedPaginated:", error);
+        setter([]);
+    }
+}
+
 // FIRESTORE ------------------------------------------------------------------------------------ END
 
 // AUTH ------------------------------------------------------------------------------------ START
