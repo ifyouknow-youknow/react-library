@@ -11,8 +11,7 @@ function App() {
       {/*  */}
 
       <Clickable onPress={async () => {
-        const hits = await searchAlgolia('NEH55XXESD', '86558918b58352b53ef366cce28b9494', 'KeepMe', 'Blocks', {});
-        console.log(hits)
+
       }}>
         <p>Press Me</p>
       </Clickable>
