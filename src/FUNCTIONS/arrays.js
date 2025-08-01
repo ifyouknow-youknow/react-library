@@ -23,3 +23,34 @@ export function sortArrayByObj(arr, field, desc = false) {
         return 0; // If equal, no sorting
     });
 }
+export function removeDupes(arr) {
+    return [...new Set(arr)];
+}
+export function removeDupesByObj(arr, key) {
+    const seen = new Set();
+    return arr.filter(obj => {
+        const val = obj[key];
+        if (seen.has(val)) return false;
+        seen.add(val);
+        return true;
+    });
+}
+export function removeDupeArray(arrays) {
+    const seen = new Set();
+    return arrays.filter(array => {
+        // Normalize nested array or array of objects
+        const norm = JSON.stringify(
+            array.map(item =>
+                typeof item === 'object' && item !== null
+                    ? Object.keys(item).sort().reduce((acc, key) => {
+                        acc[key] = item[key];
+                        return acc;
+                    }, {})
+                    : item
+            )
+        );
+        if (seen.has(norm)) return false;
+        seen.add(norm);
+        return true;
+    });
+}
