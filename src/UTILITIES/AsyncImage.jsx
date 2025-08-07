@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { storage_DownloadMedia } from "react-library/src/firebase";
-import { storage } from "../firebase";
 
-export function AsyncImage({ path, classes }) {
+export function AsyncImage({ storage, path, classes }) {
     const [url, setUrl] = useState(null)
 
     async function onLoad() {
