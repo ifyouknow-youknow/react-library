@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const serverURL = "https://nothingbagel.com";
+const serverURL = "https://api.nothingbagel.com";
 
 export async function server_GET(endpoint) {
     if (typeof endpoint !== 'string') {
